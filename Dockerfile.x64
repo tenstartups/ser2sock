@@ -1,0 +1,43 @@
+#
+# Serial to socket interface server
+#
+# http://github.com/tenstartups/alarmdecoder-ser2sock
+#
+
+FROM tenstartups/alpine:latest
+
+MAINTAINER Marc Lennox <marc.lennox@gmail.com>
+
+# Set environment variables.
+ENV \
+  PAGER=more \
+  LISTENER_PORT=10000 \
+  BAUD_RATE=9600
+
+# Install packages.
+RUN \
+  apk --update add \
+    build-base \
+    git \
+    openssl-dev && \
+  rm -rf /var/cache/apk/*
+
+# Set the working directory
+WORKDIR /opt/ser2sock
+
+# Install the ser2sock application
+RUN \
+ git clone https://github.com/nutechsoftware/ser2sock.git . && \
+ ./configure && \
+ make && \
+ cp ser2sock /usr/local/bin/ && \
+ cp -R etc/ser2sock /etc/
+
+# Add files to the container.
+COPY entrypoint.sh /docker-entrypoint
+
+# Set the entrypoint script.
+ENTRYPOINT ["/docker-entrypoint"]
+
+# Expose the listener port
+EXPOSE ${LISTENER_PORT}
