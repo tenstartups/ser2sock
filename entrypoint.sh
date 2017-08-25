@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 set -e
 
 # Exit with error if SERIAL_DEVICE wasn't provided
