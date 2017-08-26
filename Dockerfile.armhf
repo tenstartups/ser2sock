@@ -1,10 +1,10 @@
 #
 # Serial to socket interface server
 #
-# http://github.com/tenstartups/alarmdecoder-ser2sock
+# http://github.com/tenstartups/ser2sock
 #
 
-FROM tenstartups/alpine:armhf
+FROM resin/armhf-alpine:latest
 
 MAINTAINER Marc Lennox <marc.lennox@gmail.com>
 
