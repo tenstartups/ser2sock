@@ -4,15 +4,18 @@
 # http://github.com/tenstartups/ser2sock
 #
 
-FROM resin/armhf-alpine:latest
+FROM arm32v6/alpine:latest
 
 LABEL maintainer="Marc Lennox <marc.lennox@gmail.com>"
+
+COPY qemu-arm-static /usr/bin/
 
 # Set environment variables.
 ENV \
   PAGER=more \
   LISTENER_PORT=10000 \
-  BAUD_RATE=9600
+  BAUD_RATE=9600 \
+  TERM=xterm-color
 
 # Install packages.
 RUN \

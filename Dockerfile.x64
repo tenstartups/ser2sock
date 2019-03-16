@@ -12,7 +12,8 @@ LABEL maintainer="Marc Lennox <marc.lennox@gmail.com>"
 ENV \
   PAGER=more \
   LISTENER_PORT=10000 \
-  BAUD_RATE=9600
+  BAUD_RATE=9600 \
+  TERM=xterm-color
 
 # Install packages.
 RUN \
